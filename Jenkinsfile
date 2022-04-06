@@ -9,25 +9,25 @@ pipeline {
   
   stages {
     
-//     stage('Building Image') {
-//       steps {
-//         script {
-//           dockerImage = docker.build("${image}")
-//         }
-//       }
-//     }
+    stage('Building Image') {
+      steps {
+        script {
+          dockerImage = docker.build("${image}")
+        }
+      }
+    }
 
-//     stage('Push Image') {
-//       steps {
-//         script {
-//           docker.withRegistry("https://${registry}", 'docker-hub-credentials') {
-//               dockerImage.push("${env.BUILD_NUMBER}")
-//               dockerImage.push("latest")
-//           }
-//           sh "echo ${registry}/${image}:${env.BUILD_NUMBER} > sysdig_secure_images"
-//         }
-//       }
-//     }
+    stage('Push Image') {
+      steps {
+        script {
+          docker.withRegistry("https://${registry}", 'docker-hub-credentials') {
+              dockerImage.push("${env.BUILD_NUMBER}")
+              dockerImage.push("latest")
+          }
+          sh "echo ${registry}/${image}:${env.BUILD_NUMBER} > sysdig_secure_images"
+        }
+      }
+    }
 
 //     stage ('Windows Image Scan') {
 //       steps {
