@@ -56,7 +56,7 @@ pipeline {
       steps {
         script {
           // Scan from local image recently built
-          sysdig engineCredentialsId: 'sysdig-secure-api-credentials', name: 'sysdig_secure_images', inlineScanning: true bailOnFail: false
+          sysdig engineCredentialsId: 'sysdig-secure-api-credentials', name: 'sysdig_secure_images', inlineScanning: true, bailOnFail: false
           // Scan from repository image recently pushed
           // sysdig engineCredentialsId: 'sysdig-secure-api-credentials', name: 'sysdig_secure_images', inlineScanning: false bailOnFail: false
           // Stop pipeline based on Sysdig Analysis
